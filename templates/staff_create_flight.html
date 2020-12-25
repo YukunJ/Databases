@@ -1,0 +1,130 @@
+<!-- Databases Fall2020 -->
+<!-- Zheng Wang Nov.18 2020 -->
+<!DOCTYPE html>
+<html>
+  <!--Basic Background settings-->
+  <meta charset="UTF-8">
+  <meta name="description" content="general">
+  <meta name="author" content="Databases Fall2020">
+  <meta name="keywords" content="databases,html,python,flask,mysql">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Create a Flight </title>
+  <body>
+    <!--Form for adding flights-->
+    {% with message = get_flashed_messages() %}
+      {% if message %}
+        <p class="error" style="color: red"><strong>Error:</strong> {{message[0]}}</p>
+      {% endif %}
+    {% endwith %}
+    <h2> You can add a flight below: </h2>
+    <form action='/home/StaffCreateAuth' method='POST'>
+      <table border="1">
+        <tr> <!--The title line of general flight search-->
+          <th>Airline Name</th>
+          <th>Flight Number</th>
+          <th>Departure Airport</th>
+          <th>Departure Time</th>
+          <th>Arrival Airport</th>
+          <th>Arrival Time</th>
+          <th>Price</th>
+          <th>Status</th>
+          <th>Airplane ID</th>
+        </tr>
+        <tr>
+          <th> <!--option for airline name-->
+          <select name="airline">
+          {% if airline %}
+            <option value="{{airline}}">{{airline}}</option>
+          {% endif %}
+          </select>
+          </th>
+          <th> <!--option for flight number-->
+            <input type="text" name = "flight_num" placeholder="flight number" required/></br>
+          </th>
+          <th> <!--option for departure airport-->
+          <select name="departure_airport">
+          {% if departure_airport %}
+            {% for line in departure_airport %}
+              <option value="{{line[0]}}">{{line[0]}}</option>
+            {% endfor %}
+          {% endif %}
+          </select>
+          </th>
+          <th> <!--option for departure time-->
+            <input type="datetime-local" name = "departure_time" step = "1" required/></br>
+          </th>
+          <th> <!--option for arrival airport-->
+          <select name="arrival_airport">
+          {% if arrival_airport %}
+            {% for line in arrival_airport %}
+              <option value="{{line[0]}}">{{line[0]}}</option>
+            {% endfor %}
+          {% endif %}
+          </select>
+          </th>
+          <th> <!--option for arrival time-->
+            <input type="datetime-local" name = "arrival_time" step = "1" required/></br>
+          </th>
+          <th> <!--option for price-->
+            <input type="text" name = "price" placeholder="price" required/></br>
+          </th>
+          <th> <!--option for status-->
+          <select name="status">
+            <option value="Upcoming">Upcoming</option>
+            <option value="In progress">In progress</option>
+            <option value="Delayed">Delayed</option>
+          </select>
+          </th>
+          <th> <!--option for airplane id-->
+          <select name="airplane_id">
+          {% if airplane_id %}
+            {% for line in airplane_id %}
+              <option value={{line[0]}}>{{line[0]}}</option>
+            {% endfor %}
+          {% endif %}
+          </select>
+          </th>
+        </tr>
+      </table>
+      <input type="submit" value="Add">
+    </form>
+    {% if error %}
+      <p class="error" style="color: red"><strong>Error:</strong> {{error}}</p>
+    {% endif %}
+
+    {% if success %}
+      <p class="error" style="color: blue">You have successfully created a flight!</p>
+      <h2> Below are all the upcoming flights operated by your airline for the next 30 days: </h2>
+      <table border="1">
+        <tr> <!--The title line of flight-->
+          <th>Airline Name</th>
+          <th>Flight Number</th>
+          <th>Departure Airport</th>
+          <th>Departure Time</th>
+          <th>Arrival Airport</th>
+          <th>Arrival Time</th>
+          <th>Price</th>
+          <th>Status</th>
+          <th>Airplane ID</th>
+        </tr>
+
+        {% for result in flights %}
+        <tr>
+          <td>{{result[0]}}</td>
+          <td>{{result[1]}}</td>
+          <td>{{result[2]}}</td>
+          <td>{{result[3]}}</td>
+          <td>{{result[4]}}</td>
+          <td>{{result[5]}}</td>
+          <td>{{result[6]}}</td>
+          <td>{{result[7]}}</td>
+          <td>{{result[8]}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    {% endif %}
+
+    <br/><br/>
+    <a href="/home">Go back</a>
+  </body>
+</html>

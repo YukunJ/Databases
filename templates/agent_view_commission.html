@@ -1,0 +1,55 @@
+<!-- Databases Fall2020 -->
+<!-- Zheng Wang Nov.25 2020 -->
+<!DOCTYPE html>
+<html>
+  <!--Basic Background settings-->
+  <meta charset="UTF-8">
+  <meta name="description" content="general">
+  <meta name="author" content="Databases Fall2020">
+  <meta name="keywords" content="databases,html,python,flask,mysql">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> View My Commission </title>
+  <body>
+    {% with message = get_flashed_messages() %}
+      {% if message %}
+        <p class="error" style="color: red"><strong>Error:</strong> {{message[0]}}</p>
+      {% endif %}
+    {% endwith %}
+    <h2> Below are your total commission, tickets sold, and average commission per ticket in the past 30 days: </h2>
+    <table border="1">
+      <tr> <!--The title line of default display-->
+        <th>Total Commission</th>
+        <th>Number of Tickets Sold</th>
+        <th>Average Commission per Ticket</th>
+      </tr>
+      <tr>
+        <td>{{commission[0]}}</td>
+        <td>{{num_ticket[0]}}</td>
+        <td>{{average_commission}}</td>
+      </tr>
+    </table>
+
+    <!--Form for searching commission given a time period-->
+    <h2> You can customize your search below by specifying starting and ending time: </h2>
+    <form action='/home/agent_view_commission/agent_customize_commission' method='POST'>
+      <table border="1">
+        <tr> <!--The title line of general flight search-->
+          <th>Starting Date</th>
+          <th>Ending Date</th>
+        </tr>
+        <tr>
+          <th> <!-- option for starting date-->
+            <input type="date" min="2000-01-01" max="2099-12-31" name="starting_date" required/>
+          </th>
+          <th> <!-- option for ending date-->
+            <input type="date" min="2000-01-01" max="2099-12-31" name="ending_date" required/>
+          </th>
+        </tr>
+      </table>
+      <input type="submit" value="Search">
+    </form>
+
+    <br/><br/>
+    <a href="/home">Go back</a>
+  </body>
+</html>

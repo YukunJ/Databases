@@ -1,0 +1,19 @@
+<!-- Databases Fall2020 -->
+<!-- Yukun Jiang Nov.23 2020 -->
+<!DOCTYPE html>
+<html>
+  <!--Basic Background settings-->
+  <meta charset="UTF-8">
+  <meta name="description" content="general">
+  <meta name="author" content="Databases Fall2020">
+  <meta name="keywords" content="databases,html,python,flask,mysql">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Customize Failure </title>
+  <body>
+
+    {% if error %}
+      <p class="error" style="color: red"><strong>Error:</strong> {{error}}</p>
+    {% endif %}
+    <a href="/customer_spending">Go back</a>
+  </body>
+</html>

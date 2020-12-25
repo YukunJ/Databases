@@ -1,0 +1,86 @@
+<!-- Databases Fall2020 -->
+<!-- Yukun Jiang Nov.16 2020 -->
+<!DOCTYPE html>
+<html>
+  <!--Basic Background settings-->
+  <meta charset="UTF-8">
+  <meta name="description" content="general">
+  <meta name="author" content="Databases Fall2020">
+  <meta name="keywords" content="databases,html,python,flask,mysql">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Customer Flight Search </title>
+  <body>
+    <h2> Customer Flight Search </h2>
+    <form action='/customer_search' method='POST'>
+      <table border="1">
+        <tr> <!--The title line of general flight search-->
+          <th>Departure City</th>
+          <th>Departure Airport</th>
+          <th>Arrival City</th>
+          <th>Arrival Airport</th>
+          <th>Flight Date</th>
+        </tr>
+        <tr>
+          <th> <!--option for departure city-->
+          <select name="departure_city">
+          <option value="all">All</option>
+          {% if departure_city %}
+            {% for city in departure_city %}
+              <option value="{{city[0]}}">{{city[0]}}</option>
+            {% endfor %}
+          {% endif %}
+          </select>
+          </th>
+
+          <th> <!--option for departure airport-->
+          <select name="departure_airport">
+          <option value="all">All</option>
+          {% if departure_airport %}
+            {% for airport in departure_airport %}
+              <option value="{{airport[0]}}">{{airport[0]}}</option>
+            {% endfor %}
+          {% endif %}
+          </select>
+          </th>
+
+          <th> <!--option for arrival city-->
+          <select name="arrival_city">
+          <option value="all">All</option>
+          {% if arrival_city %}
+            {% for city in arrival_city %}
+              <option value="{{city[0]}}">{{city[0]}}</option>
+            {% endfor %}
+          {% endif %}
+          </select>
+          </th>
+
+          <th> <!--option for arrival airport-->
+          <select name="arrival_airport">
+          <option value="all">All</option>
+          {% if arrival_airport %}
+            {% for airport in arrival_airport %}
+              <option value="{{airport[0]}}">{{airport[0]}}</option>
+            {% endfor %}
+          {% endif %}
+          </select>
+          </th>
+
+          <th> <!-- option for flight date-->
+          <input type="date" min="2020-01-01" max="2020-12-31" name="flight_date"/>
+          </th>
+        </tr>
+      </table>
+    (At least one of the fields above should be specified)</br>
+    <p style="color:blue">You can purchase at most 1 ticket for each flight. No repeated purchases allowed.</p> </br>
+      <input type="submit" value="Search">
+    </form></br>
+
+    {% with message = get_flashed_messages() %} <!-- success purchase notification-->
+				{% if message %}
+				<p style="color:red"><b>{{message[0]}}</b></p>
+				{% endif %}
+		{% endwith %}
+
+    <a href="/home">Home Page</a>
+  </body>
+</html>

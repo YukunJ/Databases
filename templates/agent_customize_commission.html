@@ -1,0 +1,30 @@
+<!-- Databases Fall2020 -->
+<!-- Zheng Wang Nov.25 2020 -->
+<!DOCTYPE html>
+<html>
+  <!--Basic Background settings-->
+
+  <meta charset="UTF-8">
+  <meta name="description" content="general">
+  <meta name="author" content="Databases Fall2020">
+  <meta name="keywords" content="databases,html,python,flask,mysql">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Agent View Commission </title>
+  <body>
+    <h2> Below are your total commission and tickets sold in selected period:</h2>
+      <table border="1">
+        <tr> <!--The title line of flight search-->
+          <th>Total Commission</th>
+          <th>Number of Tickets Sold</th>
+        </tr>
+
+        <tr>
+          <td>{{commission[0]}}</td>
+          <td>{{num_ticket[0]}}</td>
+        </tr>
+        </br>
+      </table>
+      </br>
+      <a href="/home/agent_view_commission">Back to Search</a>
+  </body>
+</html>

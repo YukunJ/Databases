@@ -1,0 +1,25 @@
+<!-- Databases Fall2020 -->
+<!-- Yukun Jiang Nov.16 2020 -->
+<!DOCTYPE html>
+<html>
+  <!--Basic Background settings-->
+  <meta charset="UTF-8">
+  <meta name="description" content="general">
+  <meta name="author" content="Databases Fall2020">
+  <meta name="keywords" content="databases,html,python,flask,mysql">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Revenue Comparison</title>
+  <body>
+      <h1>Revenue Comparison for <font color="blue">{{airline}}</font> Airline</h1>
+      In the last <b>MONTH</b> (<font color="green">{{last_month_date}}</font> to <font color="green">{{today_date}}</font>):</br>
+      Direct sale revenue: <font color="red">{{non_agent_last_month}}</font></br>
+      Indirect sale revenue: <font color="red">{{agent_last_month}}</font></br></br>
+
+      In the last <b>YEAR</b> (<font color="green">{{last_year_date}}</font> to <font color="green">{{today_date}}</font>):</br>
+      Direct sale revenue: <font color="red">{{non_agent_last_year}}</font></br>
+      Indirect sale revenue: <font color="red">{{agent_last_year}}</font></br></br>
+
+      <img src="data:image/png;base64, {{ plot_url }}" width="600"></br>
+      <a href="/home">Go back</a>
+  </body>
+</html>

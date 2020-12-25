@@ -1,0 +1,48 @@
+<!-- Databases Fall2020 -->
+<!-- Yukun Jiang Nov.16 2020 -->
+<!DOCTYPE html>
+<html>
+  <!--Basic Background settings-->
+  <meta charset="UTF-8">
+  <meta name="description" content="general">
+  <meta name="author" content="Databases Fall2020">
+  <meta name="keywords" content="databases,html,python,flask,mysql">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Search Result </title>
+  <body>
+    <h2> Search Result</h2>
+      <table border="1">
+        <tr> <!--The title line of flight search-->
+          <th>Airline Name</th>
+          <th>Flight Number</th>
+          <th>Departure Airport</th>
+          <th>Departure Time</th>
+          <th>Arrival Airport</th>
+          <th>Arrival Time</th>
+          <th>Price</th>
+          <th>Status</th>
+          <th>Airplane ID</th>
+        </tr>
+
+        {% for result in flight %}
+        <tr>
+          <td>{{result[0]}}</td>
+          <td>{{result[1]}}</td>
+          <td>{{result[2]}}</td>
+          <td>{{result[3]}}</td>
+          <td>{{result[4]}}</td>
+          <td>{{result[5]}}</td>
+          <td>{{result[6]}}</td>
+          <td>{{result[7]}}</td>
+          <td>{{result[8]}}</td>
+        </tr>
+        {% endfor %}
+        </br>
+        {% if error %}
+          <p class="error" style="color: red"><strong>Error:</strong> {{error}}</p>
+        {% endif %}
+      </table>
+      </br>
+      <a href="/home/staff_view_freq_customer">Back to Search</a>
+  </body>
+</html>

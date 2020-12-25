@@ -1,0 +1,46 @@
+<!-- Databases Fall2020 -->
+<!-- Yukun Jiang Nov.17 2020 -->
+<!DOCTYPE html>
+<html>
+  <!--Basic Background settings-->
+  <meta charset="UTF-8">
+  <meta name="description" content="general">
+  <meta name="author" content="Databases Fall2020">
+  <meta name="keywords" content="databases,html,python,flask,mysql">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Flight Status </title>
+  <body>
+    <h2> Flight Status </h2>
+    <form action='/check_status' method='POST'>
+      <table border="1">
+        <tr> <!--The title line of general flight search-->
+          <th>Flight number</th>
+          <th>Arrival Date</th>
+          <th>Departure Date</th>
+        </tr>
+        <tr>
+          <th> <!-- input for flight number-->
+            <input type="text" name = "flight_number"/>
+          </th>
+
+          <th> <!-- option for Arrival date-->
+          <input type="date" min="2015-01-01" max="2025-12-31" name="arrival_date"/>
+          </th>
+
+          <th> <!-- option for Departure date-->
+          <input type="date" min="2015-01-01" max="2025-12-31" name="departure_date"/>
+          </th>
+        </tr>
+      </table>
+      (At least one of the fields above should be specified)</br></br>
+      <input type="submit" value="check status">
+    </form>
+
+    {% if error %}
+      <p class="error" style="color: red"><strong>Error:</strong> {{error}}</p>
+    {% endif %}
+
+    </br>
+    <a href="/">Go back</a>
+  </body>
+</html>

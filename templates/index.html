@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <div align = "center">
+  <img  src="static/nyush_logo.jpg" alt="logo pic" width="120" height="100"/>
+  <img  src="static/wangzheng.png" alt="wangzheng pic" width="120" height="100"/>
+  <img  src="static/jiangyukun.png" alt="jiangyukun pic" width="120" height="100"/>
+
+  </br>
+  <img  src="static/title.png" alt="title pic" width="900" height="170"/>
+  </div>
+  <hr/>
+</head>
+
+<body>
+{% with message = get_flashed_messages() %}
+  {% if not message %}
+	  <h2>Welcome to the Online Air Ticket Reservation System!</h2>
+		<a href="/login">Login</a></br></br>
+		<a href="/register">Register</a></br></br>
+		<a href="/flight_search">View Public Flight</a></br></br>
+    <a href="/flight_status">Check Flight Status</a>
+  {% endif %}
+
+  {% if message %}
+    <h2>You have successfully created your acount!</h2>
+    <a href="/login">Login</a></br></br>
+    <a href="/register">Register</a></br></br>
+    <a href="/flight_search">View Public Flight</a></br></br>
+    <a href="/flight_status">Check Flight Status</a>
+  {% endif %}
+
+{% endwith %}
+</body>
+
+</html>

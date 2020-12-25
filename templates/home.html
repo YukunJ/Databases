@@ -1,0 +1,62 @@
+<html>
+<head>
+</head>
+<body>
+	{% if identity == "customer" %}
+    <h2>Welcome, our customer! Your username is <font color="blue">{{username}}</font>.</h2>
+
+		{% with message = get_flashed_messages() %} <!-- success purchase notification-->
+				{% if message %}
+				<p style="color:red"><b>{{message[0]}}</b></p>
+				{% endif %}
+		{% endwith %}
+
+		<h3>Your upcoming flights:</h3>
+		<style type="text/css">table, th, td{border: 1px solid black;}</style>
+		<table>
+			<th>Airline</th><th>Flight Number</th><th>Departure Airport</th>
+			<th>Departure Time</th><th>Arrival Airport</th><th>Arrival Time</th><th>Status</th>
+		{% for line in upcoming %}
+			<tr>
+				<td>{{line[0]}}</td>
+				<td>{{line[1]}}</td>
+				<td>{{line[2]}}</td>
+				<td>{{line[3]}}</td>
+				<td>{{line[4]}}</td>
+				<td>{{line[5]}}</td>
+				<td>{{line[6]}}</td>
+			</tr>
+		{% endfor %}
+	</table></br>
+
+		<a href="/customer_flight_search">Purchase a ticket</a></br></br>
+		<a href="/customer_spending">Track my spendings</a></br>
+  {% endif %}
+
+	{% if identity == "booking_agent" %}
+		<h2>Welcome, our booking agent! Your username is <font color="blue">{{username}}</font>.</h2>
+		<a href="/home/agent_view_flight">View my flight</a></br></br>
+		<a href="/home/agent_flight_search">Purchase a ticket</a></br></br>
+		<a href="/home/agent_view_commission">View my commission</a></br></br>
+		<a href="/home/agent_top_customer">View top customers</a></br></br>
+	{% endif %}
+
+	{% if identity == "airline_staff" %}
+		<h2>Welcome, our airline staff! Your username is <font color="blue">{{username}}</font>.</h2>
+		<a href="/home/staff_view_flight">View my flight</a></br></br>
+		<a href="/home/staff_create_flight">Create a new flight</a></br></br>
+		<a href="/home/staff_change_status">Change flight status</a></br></br>
+		<a href="/home/staff_add_airplane">Add an airplane</a></br></br>
+		<a href="/home/staff_add_airport">Add an airport</a></br></br>
+		<a href="/home/staff_view_agent">View booking agents</a></br></br>
+		<a href="/home/staff_view_freq_customer">View frequent customers</a></br></br>
+		<a href="/home/staff_view_report">View reports</a></br></br>
+		<a href="/home/staff_revenue_comparison">Comparison of revenue earned</a></br></br>
+		<a href="/home/staff_top_destination">View top destinations</a></br></br>
+	{% endif %}
+
+<br/><br/><br/>
+<a href="/logout">Logout</a>
+
+</body>
+</html>

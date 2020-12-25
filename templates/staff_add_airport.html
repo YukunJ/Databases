@@ -1,0 +1,45 @@
+<!-- Databases Fall2020 -->
+<!-- Zheng Wang Nov.23 2020 -->
+<!DOCTYPE html>
+<html>
+  <!--Basic Background settings-->
+  <meta charset="UTF-8">
+  <meta name="description" content="general">
+  <meta name="author" content="Databases Fall2020">
+  <meta name="keywords" content="databases,html,python,flask,mysql">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Add an airport </title>
+  <body>
+    <!--Form for adding flights-->
+    {% with message = get_flashed_messages() %}
+      {% if message %}
+        <p class="error" style="color: red"><strong>Error:</strong> {{message[0]}}</p>
+      {% endif %}
+    {% endwith %}
+    <h2> You can add an airport below: </h2>
+    <form action='/home/StaffAddAirportAuth' method='POST'>
+      <table border="1">
+        <tr>
+          <th>Airport Name</th>
+          <th>Airport City</th>
+        </tr>
+        <tr>
+          <th> <!--option for airport name-->
+            <input type="text" name="airport_name" placeholder="Name" required/></br>
+          </th>
+          <th> <!--option for airport city-->
+            <input type="text" name="city" placeholder="City" required/></br>
+          </th>
+        </tr>
+      </table>
+      <input type="submit" value="Add">
+    </form>
+
+    {% if success %}
+      <p class="error" style="color: blue"><strong>Success:</strong> You have added an airport!</p>
+    {% endif %}
+
+    <br/><br/>
+    <a href="/home">Go back</a>
+  </body>
+</html>
