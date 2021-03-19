@@ -1,6 +1,6 @@
 # <CSCI-SHU 213 Databases> Fall-2020
 
-This is the repository for CSCI-SHU 213 Databases course. The final project is a web-based air-ticket reservation databases system.
+This is the repository for CSCI-SHU 213 Databases course, done at NYU Shanghai Senior year Fall 2020. The final project is a web-based air-ticket reservation databases system.
 
 Team members: Yukun, Jiang(jy2363) and Zheng, Wang(zw1454)
 
